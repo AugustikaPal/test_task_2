@@ -11,6 +11,15 @@ const fetchUsers=async()=>{
     }
 
 }
+const fetchUserById=async(id)=>{
+    try{
+        const res = await instance.get(`/enteries/${id}`);
+        console.log(res,"-------17");
+        return res;
+    }catch(error){
+        console.log(`Error`,error);
+    }
+}
 
 const createUsers=async(name,company,technology,description)=>{
    console.log(`Inside api for create user-----16`);
@@ -31,4 +40,4 @@ const createUsers=async(name,company,technology,description)=>{
     }
 }
 
-export {fetchUsers,createUsers}
+export {fetchUsers,createUsers,fetchUserById}

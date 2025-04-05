@@ -15,8 +15,8 @@ function App() {
       children: [
         { index: true, element: <Login /> },
         { path: "/dashboard", element: <Dashboard /> },
-        { path: "/details", element: <Details /> },
-        { path: "/details/:id", element: <UserDetails /> },
+        // { path: "/details", element: <Details /> },
+        { path: "/dashboard/:id", element: <UserDetails /> },
       ],
     },
   ]);

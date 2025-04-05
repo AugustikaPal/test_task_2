@@ -1,9 +1,9 @@
-//import api from "./authAxiosInstance";
-import axios from "axios";
+import api from "./authAxiosInstance";
+//import axios from "axios";
 
 const validateUser=async({username,password})=>{
     try{
-        let res = await axios.post(`https://dummyjson.com/auth/login`,{
+        let res = await api.post(`/login`,{
             username,password
         });
         console.log("Inside validation ")

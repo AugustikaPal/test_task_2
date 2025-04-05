@@ -2,8 +2,10 @@ import React from "react";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createUsers } from "../api/apiService";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
+  const navigate = useNavigate();
   const queryClient = useQueryClient();
 
   const [userdata, setUserdata] = useState({
@@ -73,6 +75,7 @@ const Form = () => {
         value={userdata.description}
       />
       <button onClick={() => { addMutation.mutate(userdata);}}>Add</button>
+      {/* <button onClick={()=>{navigate('/details')}}>View all names</button> */}
     </div>
   );
 };
