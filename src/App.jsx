@@ -5,11 +5,15 @@ import Dashboard from "./pages/Dashboard";
 import UserDetails from "./pages/UserDetails"
 import ErrorPage from "./components/ErrorPage";
 import { createBrowserRouter,RouterProvider } from "react-router";
+// import {logoutAction} from "./util/auth";
+import { tokenLoader } from "./util/auth";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
+      id:'root',
+      loader: tokenLoader,
       element: <Header/>,
       errorElement: <ErrorPage />,
       children: [
@@ -17,6 +21,7 @@ function App() {
         { path: "/dashboard", element: <Dashboard /> },
         // { path: "/details", element: <Details /> },
         { path: "/dashboard/:id", element: <UserDetails /> },
+        // {path:"/logout" , action : logoutaction }
       ],
     },
   ]);
@@ -24,6 +29,7 @@ function App() {
   return (
     <>
      <RouterProvider router={router} />
+
      
     </>
   );

@@ -17,12 +17,10 @@ api.interceptors.request.use(
 
 api.interceptors.response.use(
     (res)=>{
-        console.log(res,`inside login auth interc`);
         return res;
     }
 ,
     (error)=>{
-        console.log(`Inside error login interc`);
         return Promise.reject(error);
     }
 )

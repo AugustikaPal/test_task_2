@@ -7,17 +7,13 @@ const UserDetails = () => {
   const params = useParams();
   const userId = params.id;
 
-  //console.log("params",params);
-  console.log("params", params);
 
   const { data, isLoading, isError } = useQuery({
     queryKey: ["users", userId],
     queryFn:()=> fetchUserById(userId),
   });
-  console.log(data, `---17`);
   //const {name} = data?.data?.name || "undeff";
  
-  console.log(data?.data?.name, `--name20`);
   //const {name} = data?.data?.name || 0;
 
   {

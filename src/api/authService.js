@@ -6,13 +6,12 @@ const validateUser=async({username,password})=>{
         let res = await api.post(`/login`,{
             username,password
         });
-        console.log("Inside validation ")
-        console.log(username,password);
-
-        console.log("----8 user emily logging in ")
-        console.log(res?.data);
-        
+      
+        const token = res?.data?.accessToken;
+        localStorage.setItem('token',token);
+      
         return res?.data;
+
         
     }catch(error){
         console.log(error);

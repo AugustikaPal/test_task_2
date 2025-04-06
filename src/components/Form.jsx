@@ -17,8 +17,7 @@ const Form = () => {
 
   const addMutation = useMutation({
     mutationFn: (userdata) => {
-      console.log("inside mutation ----18");
-      console.log(userdata);
+      
       createUsers(
         userdata.name,
         userdata.company,
@@ -27,7 +26,6 @@ const Form = () => {
       );
     },
     onSuccess: (userdata) => {
-      console.log("user added", userdata);
       queryClient.invalidateQueries({ queryKey: ["users"] });
       
     },
@@ -37,7 +35,6 @@ const Form = () => {
   });
 
   const handleChange = (e) => {
-    console.log(userdata);
     setUserdata({ ...userdata, [e.target.name]: e.target.value });
   };
 

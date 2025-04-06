@@ -3,9 +3,8 @@ import axios from "axios";
 
 const instance = axios.create({
     baseURL :`https://67f0eb8bc733555e24ab999e.mockapi.io/users`,
-    headers:{
-        "myname":"augustika"
-    }
+    
+   
 })
 
 instance.interceptors.request.use(

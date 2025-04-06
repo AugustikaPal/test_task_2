@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { validateUser } from "../api/authService";
+import "tailwindcss";
+import { redirect ,useNavigate } from "react-router-dom";
+
 
 const Login = () => {
+  const navigate = useNavigate();
   const [formdata, setFormdata] = useState({
     username: "",
     password: "",
@@ -12,7 +16,12 @@ const Login = () => {
       mutationFn: validateUser,
       
       onSuccess: (data) => {
-        console.log(data, " logged in");
+        console.log(data?.firstName ,"---fname");
+        if(data?.firstName)
+       { navigate('/dashboard');}
+        else{
+          alert("Invalid credentials")
+        }
       },
       onError: (error) => {
         console.log("Login error", error);
