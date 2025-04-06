@@ -7,6 +7,7 @@ const Details = () => {
   const { data, isLoading, isError } = useQuery({
     queryKey: ["users"],
     queryFn: fetchUsers,
+    refetchOnWindowFocus: false,
   });
   {
     isLoading && <>Loading...</>;
@@ -16,15 +17,7 @@ const Details = () => {
   }
 
   return (
-    // <div>
-    //   <h2>User Details</h2>
-    //   {data?.map((user) => (
-    //     <div key={user.id}>
-    //       <Link to={`/dashboard/${user.id}`}>{user.name}</Link>
-    //     </div>
-    //   ))}
-    // </div>
-
+  
     <div>
     <h2 className="text-2xl font-bold mb-4 text-purple-700 text-center">User Details</h2>
     <div className="space-y-3">
