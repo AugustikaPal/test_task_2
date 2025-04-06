@@ -6,26 +6,24 @@ import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
   
-  const navigate = useNavigate();
-  const [isAuthenticated ,setIsauthenticated] = useState(false);
+  //const navigate = useNavigate();
+  // const [isAuthenticated ,setIsauthenticated] = useState(false);
   
-  useEffect(()=>{ 
-    const data = getAuthToken();
-    //console.log(data);
-    if(data)
-    {
-       setIsauthenticated(true);
-    }
-    else{
-      navigate('/');
-    }
-    
-  },[]);
+  // useEffect(()=>{ 
+  //   const data = getAuthToken();
+  //   if(data)
+  //   {
+  //      setIsauthenticated(true);
+  //   }
+  //   else{
+  //     navigate('/');
+  //   }
+  // },[]);
 
-  if(!isAuthenticated)
-  {
-    return ;
-  }
+  // if(isAuthenticated===false)
+  // {
+  //   return ;
+  // }
 
   return (
     <div>

@@ -6,7 +6,7 @@ import UserDetails from "./pages/UserDetails"
 import ErrorPage from "./components/ErrorPage";
 import { createBrowserRouter,RouterProvider } from "react-router";
 // import {logoutAction} from "./util/auth";
-import { tokenLoader } from "./util/auth";
+import { checkAuthLoader, tokenLoader } from "./util/auth";
 
 function App() {
   const router = createBrowserRouter([
@@ -18,7 +18,7 @@ function App() {
       errorElement: <ErrorPage />,
       children: [
         { index: true, element: <Login /> },
-        { path: "/dashboard", element: <Dashboard /> },
+        { path: "/dashboard", element: <Dashboard /> , loader:checkAuthLoader },
         // { path: "/details", element: <Details /> },
         { path: "/dashboard/:id", element: <UserDetails /> },
         // {path:"/logout" , action : logoutaction }

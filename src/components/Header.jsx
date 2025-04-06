@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Outlet ,Form, redirect ,useNavigate} from 'react-router-dom'
 
 import 'tailwindcss';
-import MainNavigation from './MainNavigation';
+
 import { useRouteLoaderData } from 'react-router-dom';
 import { getAuthToken, logoutAction } from '../util/auth';
 
@@ -13,15 +13,15 @@ const Header = () => {
   const navigate = useNavigate();
   
   //const [isLogin,setIsLogin]=useState(false);
-  useEffect(()=>{
-   getAuthToken();
-  },[]);
+  // useEffect(()=>{
+  //  getAuthToken();
+  // },[]);
 
   return (
     <div>
       <nav>
-          <div>Logo</div>
-          <MainNavigation/>
+          <h2>Logo</h2>
+       
        {
           token && <button onClick={()=>{ localStorage.removeItem('token'); navigate('/')}} >Logout</button>
           }

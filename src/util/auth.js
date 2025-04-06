@@ -26,4 +26,10 @@ export function logoutAction(){
     localStorage.removeItem('token');
     return navigate('/');
 }
-//expor
+export const checkAuthLoader=()=>{
+    const token = getAuthToken();
+    if(!token)
+    {
+        redirect('/');
+    }
+}
