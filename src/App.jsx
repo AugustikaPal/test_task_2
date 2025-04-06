@@ -6,6 +6,7 @@ import UserDetails from "./pages/UserDetails"
 import ErrorPage from "./components/ErrorPage";
 import { createBrowserRouter,RouterProvider } from "react-router";
 // import {logoutAction} from "./util/auth";
+import './App.css'
 import { checkAuthLoader, tokenLoader } from "./util/auth";
 
 function App() {
