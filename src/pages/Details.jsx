@@ -8,7 +8,6 @@ const Details = () => {
     queryKey: ["users"],
     queryFn: fetchUsers,
   });
-  console.log(data);
   {
     isLoading && <>Loading...</>;
   }

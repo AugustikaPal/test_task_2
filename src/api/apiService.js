@@ -42,7 +42,6 @@ const createUsers=async(name,company,technology,description)=>{
             }
         });
 
-        console.log(res?.data);
         return res?.data;
 
 

@@ -5,7 +5,6 @@ const api = axios.create({
 })
 api.interceptors.request.use(
     (config)=>{
-        console.log(`Inside login req interce`);
         return config;
     }
     ,

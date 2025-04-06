@@ -16,7 +16,6 @@ const Login = () => {
       mutationFn: validateUser,
       
       onSuccess: (data) => {
-        console.log(data?.firstName ,"---fname");
         if(data?.firstName)
        { navigate('/dashboard');}
         else{
@@ -40,7 +39,6 @@ const Login = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(formdata);
     mutate(formdata);
 
    

@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import { Outlet ,Form, redirect ,useNavigate} from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Outlet ,Form, redirect ,useNavigate, useLocation} from 'react-router-dom'
 
 import 'tailwindcss';
 
@@ -8,11 +8,26 @@ import { getAuthToken, logoutAction } from '../util/auth';
 
 
 const Header = () => {
-  const token = useRouteLoaderData('root');
-  console.log(token,"---token in header");
+const [token , setToken]=useState('');
+const location = useLocation();
+  // const token = useRouteLoaderData('root');
+
+  // console.log(token,"---token in header");
   const navigate = useNavigate();
+ 
+
+
+  useEffect(()=>{
+    
+   // console.log('-ap---')
+
+    const data = localStorage.getItem('token')
+    setToken(data);
+
+  },[location])
+  console.log(token,'-----state')
   
-  //const [isLogin,setIsLogin]=useState(false);
+  // //const [isLogin,setIsLogin]=useState(false);
   // useEffect(()=>{
   //  getAuthToken();
   // },[]);
@@ -24,6 +39,8 @@ const Header = () => {
        
        {
           token && <button onClick={()=>{ localStorage.removeItem('token'); navigate('/')}} >Logout</button>
+
+          // token && <button onClick={logoutAction} >Logout</button>
           }
       </nav>
       <Outlet/>

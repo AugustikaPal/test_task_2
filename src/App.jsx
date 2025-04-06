@@ -18,7 +18,7 @@ function App() {
       errorElement: <ErrorPage />,
       children: [
         { index: true, element: <Login /> },
-        { path: "/dashboard", element: <Dashboard /> , loader:checkAuthLoader },
+        { path: "/dashboard", element:  <Dashboard /> , loader:checkAuthLoader },
         // { path: "/details", element: <Details /> },
         { path: "/dashboard/:id", element: <UserDetails /> },
         // {path:"/logout" , action : logoutaction }

@@ -1,10 +1,11 @@
-import { redirect,useNavigate } from "react-router-dom";
+import { redirect } from "react-router-dom";
 
 
 export const getAuthToken=()=>{
 
     try{
         let token =  localStorage.getItem('token');
+        
         return token;
     }catch(error)
     {
@@ -22,14 +23,16 @@ export const tokenLoader=()=>{
 }
 
 export function logoutAction(){
-    const navigate = useNavigate();
+   // const navigate = useNavigate();
     localStorage.removeItem('token');
-    return navigate('/');
+    return redirect('/');
 }
+
+
 export const checkAuthLoader=()=>{
     const token = getAuthToken();
     if(!token)
     {
-        redirect('/');
+        return redirect('/');
     }
 }
