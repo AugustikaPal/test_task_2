@@ -2,10 +2,10 @@ import React from "react";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createUsers } from "../api/apiService";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 
 const Form = () => {
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const queryClient = useQueryClient();
 
   //
@@ -15,15 +15,15 @@ const Form = () => {
   const validateForm = () => {
     const newErrors = {};
     if (!userdata.name || userdata.name.trim().length < 3) {
-      newErrors.name = "Name must be at least 3 characters long.";
+      newErrors.name = "Names must be at least 3 characters long";
     }
 
     if (!userdata.technology) {
-      newErrors.technology = "Technology is required.";
+      newErrors.technology = "Technology is required";
     }
 
     if (!userdata.company) {
-      newErrors.company = "Company is required.";
+      newErrors.company = "Company is required";
     }
 
     if (!userdata.description || userdata.description.trim().length < 20) {
