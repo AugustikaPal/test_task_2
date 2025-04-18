@@ -1,9 +1,12 @@
+
+
 import React from "react";
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createUsers } from "../api/apiService";
 import Input from "../common/Input";
 import Button from "../common/Button";
+import "tailwindcss"
 
 const inputFields = [
   { name: "name", placeholder: "Enter your name" },
@@ -97,7 +100,7 @@ const Form = () => {
         />
       ))}
 
-      <Button onClick={handleSubmit} disabled={isLoading}>
+      <Button onClick={handleSubmit} disabled={isLoading} >
         {isLoading ? "Adding..." : "Add User"}
       </Button>
     </div>
