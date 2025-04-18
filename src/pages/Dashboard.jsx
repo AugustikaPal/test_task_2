@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Form from "../components/Form";
 import Details from "./Details";
-import { getAuthToken } from "../util/auth";
+import { getAuthToken } from "../utils/auth";
 import { useNavigate } from "react-router-dom";
+import Button from "../common/Button";
 
 const Dashboard = () => {
   const navigate = useNavigate();

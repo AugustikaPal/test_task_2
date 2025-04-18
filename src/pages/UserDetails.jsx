@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { fetchUserById } from "../api/apiService";
-import { getAuthToken } from "../util/auth";
+import { getAuthToken } from "../utils/auth";
 
 const UserDetails = () => {
   const params = useParams();

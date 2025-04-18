@@ -7,7 +7,7 @@ import ErrorPage from "./components/ErrorPage";
 import { createBrowserRouter, RouterProvider } from "react-router";
 // import {logoutAction} from "./util/auth";
 import "./App.css";
-import { checkAuthLoader, tokenLoader } from "./util/auth";
+import { checkAuthLoader, tokenLoader } from "./utils/auth";
 
 function App() {
   const router = createBrowserRouter([

@@ -1,4 +1,4 @@
-import { getAuthToken } from "../util/auth";
+import { getAuthToken } from "../utils/auth";
 import instance from "./axiosInstance";
 //import axios from "axios";
 

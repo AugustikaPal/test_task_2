@@ -1,8 +1,11 @@
-import React, { useState ,handleKeyPress } from "react";
+import React, { useState, } from "react";
+import Button from "../common/Button";
 import { useMutation } from "@tanstack/react-query";
 import { validateUser } from "../api/authService";
 import "tailwindcss";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Input from "../common/Input";
+
 
 const Login = () => {
   const navigate = useNavigate();
@@ -24,10 +27,6 @@ const Login = () => {
     },
   });
 
-
-  // const { mutate, isLoading, isError } = useLoginMutation();
-  
-
   const handleChange = (e) => {
     setFormdata({
       ...formdata,
@@ -35,18 +34,7 @@ const Login = () => {
     });
   };
 
-  const handleClick = (e) => {
-    e.preventDefault();
-    mutate(formdata);
-  };
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      handleClick(e); 
-    }
-  };
-  console.log("isLoading:", isLoading);
-
-  
+ 
   return (
     <div className="h-screen overflow-hidden  bg-gradient-to-br from-purple-100 via-white to-purple-200 flex items-center justify-center">
       <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-2xl backdrop-blur-sm bg-opacity-70">
@@ -54,38 +42,45 @@ const Login = () => {
           Login
         </h2>
 
-        <form onSubmit={handleClick} className="space-y-5">
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            mutate(formdata);
+          }}
+          className="space-y-5"
+        >
           <div>
-            <input
+            <Input
               type="text"
               name="username"
               placeholder="Enter your username"
               value={formdata.username}
               onChange={handleChange}
               className="w-full px-4 py-3 rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500"
-              onKeyDown={handleKeyPress}
+           
               required
             />
           </div>
           <div>
-            <input
+            <Input
               type="password"
               name="password"
               placeholder="Enter your password"
               value={formdata.password}
               onChange={handleChange}
               className="w-full px-4 py-3 rounded-lg bg-gray-100 focus:outline-none focus:ring-2 focus:ring-purple-500"
-              onKeyDown={handleKeyPress}
+              
               required
             />
           </div>
-          <button
+          
+          <Button
             type="submit"
             disabled={isLoading}
             className="w-full py-3 font-semibold bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300  cursor-pointer"
           >
             {isLoading ? "Logging in..." : "Login"}
-          </button>
+          </Button>
         </form>
 
         {isError && (

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Outlet, Form, useNavigate, useLocation } from "react-router-dom";
+import Button from "../common/Button";
 
 import "tailwindcss";
 
@@ -28,7 +29,7 @@ const Header = () => {
           </div>
 
           {token && (
-            <button
+            <Button
               onClick={() => {
                 localStorage.removeItem("token");
                 navigate("/");
@@ -36,7 +37,7 @@ const Header = () => {
               className="px-4 py-2 bg-purple-600 text-white rounded  cursor-pointer hover:bg-purple-700 transition"
             >
               Logout
-            </button>
+            </Button>
           )}
         </div>
       </nav>

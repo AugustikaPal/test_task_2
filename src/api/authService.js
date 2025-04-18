@@ -2,6 +2,8 @@
 import api from "./authAxiosInstance";
 
 const validateUser = async ({ username, password }) => {
+    
+
   try {
     let res = await api.post(`/login`, {
       username,
@@ -13,7 +15,8 @@ const validateUser = async ({ username, password }) => {
 
     return res?.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
+    throw error;
   }
 };
 
