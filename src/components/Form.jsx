@@ -42,33 +42,66 @@ const Form = () => {
     description: "",
   });
 
-  const addMutation = useMutation({
-    mutationFn: (userdata) => {
+  // const addMutation = useMutation({
+  //   mutationFn: (userdata) => {
       
-      createUsers(
+  //    return createUsers(
+  //       userdata.name,
+  //       userdata.company,
+  //       userdata.technology,
+  //       userdata.description
+  //     );
+  //   },
+  //   onSuccess: () => {
+  //     queryClient.invalidateQueries({ queryKey: ["users"] });
+  //     setUserdata({
+  //       name: "",
+  //       company: "",
+  //       technology: "",
+  //       description: "",
+  //     });
+    
+      
+  //   },
+  //   onError: () => {
+  //     console.log(`Error encountered while adding user`);
+  //   },
+  // });
+
+  const {
+    mutate: addUser,
+    isLoading,
+   
+  } = useMutation({
+    mutationFn: (userdata) => {
+      return createUsers(
         userdata.name,
         userdata.company,
         userdata.technology,
         userdata.description
       );
     },
-    onSuccess: (userdata) => {
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["users"] });
-    
-      
+      setUserdata({
+        name: "",
+        company: "",
+        technology: "",
+        description: "",
+      });
     },
     onError: () => {
       console.log(`Error encountered while adding user`);
     },
   });
-
+  
   const handleChange = (e) => {
     setUserdata({ ...userdata, [e.target.name]: e.target.value });
     setErrors((prev) => ({ ...prev, [e.target.name]: "" }));
   };
   const handleSubmit = () => {
     if (validateForm()) {
-      addMutation.mutate(userdata);
+      addUser(userdata);
     }
   };
 
@@ -135,10 +168,10 @@ const Form = () => {
     <button
       // onClick={() => addMutation.mutate(userdata)}
       onClick={handleSubmit}
-      disabled={addMutation.isLoading}
-      className="bg-purple-600 text-white font-semibold py-2 px-6 rounded-lg hover:bg-purple-700 transition duration-300 disabled:opacity-50"
+      disabled={addUser.isLoading}
+      className="bg-purple-600  cursor-pointer text-white font-semibold py-2 px-6 rounded-lg hover:bg-purple-700 transition duration-300 disabled:opacity-50"
     >
-      {addMutation.isLoading ? "Adding..." : "Add User"}
+      {isLoading ? "Adding..." : "Add User"}
     </button>
   </div>
   );

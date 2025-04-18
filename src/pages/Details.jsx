@@ -21,7 +21,7 @@ const Details = () => {
     <div>
     <h2 className="text-2xl font-bold mb-4 text-purple-700 text-center">User Details</h2>
     <div className="space-y-3">
-      {data?.map((user) => (
+      {/* {data?.map((user) => (
         <div
           key={user.id}
           className="bg-purple-100 text-purple-900 px-4 py-2 rounded shadow hover:bg-purple-200 transition"
@@ -30,7 +30,17 @@ const Details = () => {
             {user.name}
           </Link>
         </div>
-      ))}
+      ))} */}
+        {[...(data || [])].reverse().map((user) => (
+    <div
+      key={user.id}
+      className="bg-purple-100 text-purple-900 px-4 py-2 rounded shadow hover:bg-purple-200 transition"
+    >
+      <Link to={`/dashboard/${user.id}`} className="block font-medium">
+        {user.name}
+      </Link>
+    </div>
+  ))}
     </div>
   </div>
   );
