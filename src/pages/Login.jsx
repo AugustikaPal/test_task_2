@@ -5,18 +5,25 @@ import { validateUser } from "../api/authService";
 import "tailwindcss";
 import { useNavigate } from "react-router-dom";
 import Input from "../common/Input";
+import { useRevalidator } from "react-router-dom";
 
 const Login = () => {
+  const revalidator = useRevalidator();
   const navigate = useNavigate();
   const [formdata, setFormdata] = useState({
     username: "",
     password: "",
   });
-  const { mutate, isLoading, isError } = useMutation({
+  const { mutate, isPending, isError } = useMutation({
     mutationFn: validateUser,
     onSuccess: (data) => {
-      if (data?.firstName) {
+      if (data?.firstName ) {
+       
+       localStorage.setItem("token", data.accessToken); 
+       
+      revalidator.revalidate();
         navigate("/dashboard");
+      
       } else {
         alert("Invalid credentials");
       }
@@ -26,6 +33,7 @@ const Login = () => {
     },
   });
 
+  console.log(isPending);
   const handleChange = (e) => {
     setFormdata({
       ...formdata,
@@ -72,10 +80,10 @@ const Login = () => {
 
           <Button
             type="submit"
-            disabled={isLoading}
+            disabled={isPending}
             className="w-full py-3 font-semibold bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition duration-300  cursor-pointer"
           >
-            {isLoading ? "Logging in..." : "Login"}
+            {isPending ? "Logging in..." : "Login"}
           </Button>
         </form>
 

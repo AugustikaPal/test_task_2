@@ -11,12 +11,13 @@ const validateUser = async ({ username, password }) => {
     });
 
     const token = res?.data?.accessToken;
+    console.log(token);
     localStorage.setItem("token", token);
-
     return res?.data;
+
+    
   } catch (error) {
-    console.error(error);
-    throw error;
+    throw new Error(error.response?.data?.message || "Login failed");
   }
 };
 

@@ -1,11 +1,7 @@
-
 import Form from "../components/Form";
 import Details from "./Details";
 
-
 const Dashboard = () => {
-
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 p-6">
       <div className="container mx-auto flex flex-col md:flex-row gap-6 justify-center">

@@ -50,7 +50,7 @@ const Form = () => {
     description: "",
   });
 
-  const { mutate: addUser, isLoading } = useMutation({
+  const { mutate: addUser, isPending } = useMutation({
     mutationFn: (userdata) => {
       return createUsers(
         userdata.name,
@@ -72,6 +72,7 @@ const Form = () => {
       console.log(`Error encountered while adding user`);
     },
   });
+
 
   const handleChange = (e) => {
     setUserdata({ ...userdata, [e.target.name]: e.target.value });
@@ -100,8 +101,8 @@ const Form = () => {
         />
       ))}
 
-      <Button onClick={handleSubmit} disabled={isLoading} >
-        {isLoading ? "Adding..." : "Add User"}
+      <Button onClick={handleSubmit} disabled={isPending} >
+        {isPending ? "Adding..." : "Add User"}
       </Button>
     </div>
   );
