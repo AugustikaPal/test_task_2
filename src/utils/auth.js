@@ -23,7 +23,7 @@ export const tokenLoader=()=>{
 }
 
 export function logoutAction(){
-   // const navigate = useNavigate();
+  
     localStorage.removeItem('token');
     return redirect('/');
 }

@@ -5,7 +5,8 @@ import Dashboard from "./pages/Dashboard";
 import UserDetails from "./pages/UserDetails";
 import ErrorPage from "./components/ErrorPage";
 import { createBrowserRouter, RouterProvider } from "react-router";
-// import {logoutAction} from "./util/auth";
+// import router from "./routes"; 
+
 import "./App.css";
 import { checkAuthLoader, tokenLoader } from "./utils/auth";
 

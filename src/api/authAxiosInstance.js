@@ -1,9 +1,9 @@
 import axios from "axios";
 
-const api = axios.create({
+const authApi = axios.create({
     baseURL: `https://dummyjson.com/auth`
 })
-api.interceptors.request.use(
+authApi.interceptors.request.use(
     (config)=>{
         return config;
     }
@@ -14,7 +14,7 @@ api.interceptors.request.use(
     }
 )
 
-api.interceptors.response.use(
+authApi.interceptors.response.use(
     (res)=>{
         return res;
     }
@@ -24,4 +24,4 @@ api.interceptors.response.use(
     }
 )
 
-export default api;
+export default authApi;

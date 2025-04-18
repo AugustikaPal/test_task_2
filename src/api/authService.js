@@ -1,11 +1,11 @@
 
-import api from "./authAxiosInstance";
+import authApi  from "./authAxiosInstance";
 
 const validateUser = async ({ username, password }) => {
     
 
   try {
-    let res = await api.post(`/login`, {
+    let res = await authApi.post(`/login`, {
       username,
       password,
     });

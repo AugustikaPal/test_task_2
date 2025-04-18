@@ -1,26 +1,10 @@
-import React, { useEffect, useState } from "react";
+
 import Form from "../components/Form";
 import Details from "./Details";
-import { getAuthToken } from "../utils/auth";
-import { useNavigate } from "react-router-dom";
-import Button from "../common/Button";
+
 
 const Dashboard = () => {
-  const navigate = useNavigate();
-  const [isAuthenticated, setIsauthenticated] = useState(false);
 
-  useEffect(() => {
-    const data = getAuthToken();
-    if (data) {
-      setIsauthenticated(true);
-    } else {
-      navigate("/");
-    }
-  }, []);
-
-  if (isAuthenticated === false) {
-    return;
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-purple-100 p-6">
