@@ -29,8 +29,12 @@ const fetchUserById = async (id) => {
 };
 
 const createUsers = async (name, company, technology, description) => {
+  console.log(name,"--32");
   try {
+    
     const token = getAuthToken();
+    // console.log(token ,"apiservice");
+    // console.log("Sending POST with data:", { name, company, technology, description });
     const res = await instance.post(
       `/enteries`,
       {

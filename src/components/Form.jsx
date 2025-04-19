@@ -6,6 +6,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createUsers } from "../api/apiService";
 import Input from "../common/Input";
 import Button from "../common/Button";
+import { getAuthToken } from "../utils/auth";
 import "tailwindcss"
 
 const inputFields = [
@@ -68,8 +69,9 @@ const Form = () => {
         description: "",
       });
     },
-    onError: () => {
-      console.log(`Error encountered while adding user`);
+    onError: (error) => {
+      // console.log(`Error encountered while adding user`);
+      console.error("Error encountered while adding user:", error?.response || error);
     },
   });
 
@@ -78,9 +80,15 @@ const Form = () => {
     setUserdata({ ...userdata, [e.target.name]: e.target.value });
     setErrors((prev) => ({ ...prev, [e.target.name]: "" }));
   };
+  const token = getAuthToken();
+console.log("Token in createUsers:", token);
+
   const handleSubmit = () => {
+    console.log("inside add user button")
     if (validateForm()) {
+      console.log(userdata,"--userdata");
       addUser(userdata);
+      console.log(userdata);
     }
   };
 
@@ -101,7 +109,7 @@ const Form = () => {
         />
       ))}
 
-      <Button onClick={handleSubmit} disabled={isPending} >
+      <Button onClick={handleSubmit}  >
         {isPending ? "Adding..." : "Add User"}
       </Button>
     </div>

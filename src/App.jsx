@@ -21,7 +21,7 @@ function App() {
       children: [
         { index: true, element: <Login /> },
         { path: "/dashboard", element: <Dashboard />, loader: checkAuthLoader },
-        { path: "/dashboard/:id", element: <UserDetails /> },
+        { path: "/dashboard/:id", element: <UserDetails />,loader:checkAuthLoader },
       ],
     },
   ]);
