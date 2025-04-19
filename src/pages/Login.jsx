@@ -20,13 +20,19 @@ const Login = () => {
   const { mutate, isPending, isError } = useMutation({
     mutationFn: validateUser,
     onSuccess: (data) => {
+      if (data?.error) {
+        setLoginError(data.error); 
+        formdata.username=""
+        formdata.password=""
+        return;
+      }
       if (data?.firstName) {
         localStorage.setItem("token", data.accessToken);
 
         revalidator.revalidate();
         navigate("/dashboard");
       } else {
-        setLoginError("Invalid credentials");
+        setLoginError("Something went wrong");
       }
     },
     onError: (error) => {

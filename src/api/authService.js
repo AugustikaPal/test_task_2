@@ -1,4 +1,3 @@
-
 import authApi  from "./authAxiosInstance";
 
 const validateUser = async ({ username, password }) => {
@@ -17,8 +16,16 @@ const validateUser = async ({ username, password }) => {
 
     
   } catch (error) {
-    throw new Error(error.response?.data?.message || "Login failed");
+    // Instead of throwing, return a known "failed" shape
+    if (error.response?.status === 401) {
+      return { error: "Invalid credentials" }; // Return to onSuccess
+    }
+    throw error; // All other errors will still go to onError
   }
-};
 
+
+
+}
 export { validateUser };
+
+
