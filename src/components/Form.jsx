@@ -38,6 +38,7 @@ const Form = () => {
     if (!userdata.description || userdata.description.trim().length < 20) {
       newErrors.description =
         "Description must be at least 20 characters long.";
+        console.log("000000000")
     }
 
     setErrors(newErrors);
@@ -80,11 +81,12 @@ const Form = () => {
     setUserdata({ ...userdata, [e.target.name]: e.target.value });
     setErrors((prev) => ({ ...prev, [e.target.name]: "" }));
   };
-  const token = getAuthToken();
-console.log("Token in createUsers:", token);
 
-  const handleSubmit = () => {
-    console.log("inside add user button")
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+   
     if (validateForm()) {
       console.log(userdata,"--userdata");
       addUser(userdata);
